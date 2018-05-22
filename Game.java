@@ -84,12 +84,7 @@ public class Game extends JPanel implements MouseListener,KeyListener
         int y = e.getY();
         System.out.println("Mouse Pressed at X: " + x + " - Y: " + y);
         if(!selected){
-            if(y >= Board.TOP)
-                board.act(x,y);
-            else{
-                System.out.println("hello");
-                player.act(x,y);
-            }
+            player.act(x,y);
             selected = true;
         }
         else{

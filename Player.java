@@ -40,9 +40,10 @@ public class Player{
             num++;
         }
         if(overlaps){
-            
-            clicked = ships[num];
+            System.out.println("HIBITCHES");
+            clicked = ships[num-1];
         }
     }
-
+    
+   
 }
