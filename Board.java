@@ -10,12 +10,14 @@ public class Board extends JFrame{
     public static final int SIDE = 60;
     public static final int LEFT = 20;
     public static final int THICK = 2;
-    
+
     private ArrayList<Button> ships = new ArrayList<Button>();
     private Button[][] clicks = new Button[NUM_ROWS][NUM_COLS];
-    
+    private ArrayList<Marker> markers = new ArrayList<Marker>();
+
     public Board(){
     }
+
     public void draw( Graphics page ){
         page.setColor( Color.BLACK );//color defined using rgb values (0-255 each)
         for(int r = 0; r <= NUM_ROWS; r ++)
@@ -23,11 +25,11 @@ public class Board extends JFrame{
         for(int c = 0; c <= NUM_COLS; c++)
             page.fillRect(LEFT+SIDE*c, TOP, THICK, NUM_ROWS * SIDE);
     }
-    
+
     public void act(int x, int y){
-         
+
     }
-    
+
     public void makeButtons(){
         for(int r = 0; r < NUM_ROWS; r++)
             for(int c = 0; c < NUM_COLS; c++)
@@ -40,5 +42,11 @@ public class Board extends JFrame{
                 //button.addMouseListener(this);
                 clicks[r][c] = button;
             }
+    }
+
+    public void placeHit(String x, int y)
+    {
+        //this circle will become red circle
+        markers.add(new Marker(true, x,y));
     }
 }
