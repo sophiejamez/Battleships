@@ -1,14 +1,9 @@
+import java.awt.*;
 import java.util.*;
 import javax.swing.*;
-import java.awt.Dimension;
-import java.awt.Color;
-import java.awt.Graphics;
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
-import java.util.Scanner;
 
-public class Spot extends JLabel implements MouseListener
+public class Spot extends JButton implements MouseListener
 {
     private int row;
     private int column;
@@ -111,4 +106,6 @@ public class Spot extends JLabel implements MouseListener
 
     public void mouseExited(MouseEvent e){
     }
+   
 }
+

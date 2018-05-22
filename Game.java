@@ -1,12 +1,14 @@
-import javax.swing.*;
 import java.awt.*;
+import java.util.*;
+import javax.swing.*;
 import java.awt.event.*;
-import java.util.Scanner;
 
 public class Game extends JPanel implements MouseListener,KeyListener
 {
     private Player player;
     private Board board;
+    private boolean placed = false;
+    private boolean selected = false;
 
     //constructor - sets the initial conditions for this Game object
     public Game(int width, int height)
@@ -19,6 +21,7 @@ public class Game extends JPanel implements MouseListener,KeyListener
         //initialize the instance variables
         player = new Player();  //change these numbers and see what happens
         board = new Board();
+        board.makeButtons();
 
         this.addMouseListener(this);//allows the program to respond to key presses - Don't change
 
@@ -44,6 +47,7 @@ public class Game extends JPanel implements MouseListener,KeyListener
     public void paintComponent( Graphics page )
     {
         super.paintComponent( page );//I'll tell you later.
+        board.draw(page);
         player.draw( page );//calls the draw method in the Player class
         board.draw(page);
     }
@@ -67,18 +71,34 @@ public class Game extends JPanel implements MouseListener,KeyListener
     {
     }
     
-    public void mousePressed(MouseEvent e){
-        System.out.println("yo");
-        int xPos = e.getX();
-        int yPos = e.getY();
+    public void mouseClicked(MouseEvent e) {
+        int x = e.getX();
+        int y = e.getY();
     }
-    public void mouseClicked(MouseEvent e){
+    public void mouseEntered(MouseEvent e) {
     }
-    
-    public void mouseReleased(MouseEvent e){
+    public void mouseExited(MouseEvent e) {
     }
-    public void mouseEntered(MouseEvent e){
+    public void mousePressed(MouseEvent e) {
+        int x = e.getX();
+        int y = e.getY();
+        System.out.println("Mouse Pressed at X: " + x + " - Y: " + y);
+        if(!selected){
+            if(y >= Board.TOP)
+                board.act(x,y);
+            else{
+                System.out.println("hello");
+                player.act(x,y);
+            }
+            selected = true;
+        }
+        else{
+            player.move(x, y);
+            selected = false;
+        }
     }
-    public void mouseExited(MouseEvent e){
+    public void mouseReleased(MouseEvent e) {
+        int x = e.getX();
+        int y = e.getY();
     }
 }

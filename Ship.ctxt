@@ -2,6 +2,14 @@
 comment0.target=Ship
 comment1.params=l
 comment1.target=Ship(int)
-comment2.params=page
-comment2.target=void\ draw(java.awt.Graphics)
-numComments=3
+comment2.params=
+comment2.target=Ship()
+comment3.params=x\ y
+comment3.target=boolean\ overlapsWith(int,\ int)
+comment4.params=x\ y
+comment4.target=void\ move(int,\ int)
+comment5.params=page
+comment5.target=void\ draw(java.awt.Graphics)
+comment6.params=
+comment6.target=java.lang.String\ toString()
+numComments=7
