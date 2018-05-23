@@ -23,17 +23,33 @@ public class Player{
 
     public boolean bombHit(int xInt, int y)
     {
-        boolean hit = false;
+        System.out.println("clicked og at " + xInt + ", " + y);
         String x = Ship.convertIntX(xInt);
         y = Ship.convertToGridY(y);
+        System.out.println("clicked at " + x + ", " + y);
+        String storedX = x;
+        
         for (int i = 0; i <ships.length; i++)
         {
+            System.out.println("Ship at " + ships[i].getX() + ", " + ships[i].getY());
             if(x.equals(ships[i].getX()) && y == ships[i].getY())
             {
                 return true;
             }
+            else
+                for(int j = 0; j < ships[i].getLength()-1; j ++){
+                    storedX = Ship.increment(storedX);
+                    if(x.equals(storedX)){
+                        return true;
+                    }
+                }
         }
-        return hit;
+        return false;
+    }
+    
+    public boolean inBounds(){
+        //CHECK TO SEE IF PLACED SHIPS ARE INBOUNDS FOR BOTH PLAYER AND COMPUTER
+        return false;
     }
     
     //draws ships

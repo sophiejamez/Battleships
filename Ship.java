@@ -34,6 +34,7 @@ public class Ship{
     public Ship(){
     }
     
+    
     public void setX(int x){
         xLoc = x;
         gridX = convertIntX(xLoc);
@@ -95,7 +96,9 @@ public class Ship{
     }
     
     public static int getColVal(String col){
-        if (col.equals("A"))
+        if (col==null)
+            return -1;
+        else if(col.equals("A"))
             return 0;
         else if (col.equals("B"))
             return 1;
@@ -121,7 +124,7 @@ public class Ship{
     public static String convertIntX(int x){
         String answer = "A";
         int num = 0;
-        while(increment(answer) != null){
+        while(answer!=null){
             if(x >= Board.LEFT + Board.SIDE*num && x <= Board.LEFT + Board.SIDE*(num+1))
                 return answer;
             answer = increment(answer);
@@ -143,7 +146,9 @@ public class Ship{
     }
     
     public static String increment(String change){
-        if(change.equals("A"))
+        if(change == null)
+            return null;
+        else if(change.equals("A"))
             return "B";
         else if(change.equals("B"))
             return "C";
