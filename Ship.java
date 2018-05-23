@@ -9,6 +9,9 @@ public class Ship{
     private int xLoc;
     private int yLoc;
     
+    private String gridX;
+    private int gridY;
+    
     //player's ship constructor
     public Ship(int l){
         length = l; 
@@ -23,9 +26,19 @@ public class Ship{
             else
                 xLoc = 50;
         }
+        gridX = "";
+        gridY = 0;
     }
     
     public Ship(){
+    }
+    
+    public String getX(){
+        return gridX;
+    }
+    
+    public int getY(){
+        return gridY;
     }
     
     public boolean overlapsWith(int x, int y){
@@ -41,7 +54,14 @@ public class Ship{
         yLoc = y;
     }
     
+    public int getLength(){
+        return this.length;
+    }
+    
     public void draw( Graphics page ){
+        //snapTo();
+        
+        
         page.fillRect(this.xLoc, this.yLoc, 60*length -20, 30);
         page.setColor( new Color( 255, 255, 255 ) );
         for(int i = 0; i < length; i ++)
