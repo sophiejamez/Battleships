@@ -8,4 +8,6 @@ comment3.params=x\ y
 comment3.target=void\ act(int,\ int)
 comment4.params=
 comment4.target=void\ makeButtons()
-numComments=5
+comment5.params=x\ y
+comment5.target=void\ placeHit(java.lang.String,\ int)
+numComments=6

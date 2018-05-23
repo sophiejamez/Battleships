@@ -17,6 +17,19 @@ public class Player{
         }
     }
     
+    public boolean bombHit(int x, int y)
+    {
+        boolean hit = false;
+        for (int i = 0; i <ships.length; i++)
+        {
+            if(x == ships[i].getX() && y == ships[i].getY())
+            {
+                return true;
+            }
+        }
+        return hit;
+    }
+    
     //draws ships
     public void draw( Graphics page ){
         //color defined using rgb values (0-255 each)
