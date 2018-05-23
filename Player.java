@@ -17,12 +17,18 @@ public class Player{
         }
     }
     
-    public boolean bombHit(int x, int y)
+    public Ship getShip(int i){
+        return ships[i];
+    }
+
+    public boolean bombHit(int xInt, int y)
     {
         boolean hit = false;
+        String x = Ship.convertIntX(xInt);
+        y = Ship.convertToGridY(y);
         for (int i = 0; i <ships.length; i++)
         {
-            if(x == ships[i].getX() && y == ships[i].getY())
+            if(x.equals(ships[i].getX()) && y == ships[i].getY())
             {
                 return true;
             }
@@ -40,7 +46,6 @@ public class Player{
     }
     
     public void move(int x, int y){
-        System.out.println(clicked);
         clicked.move(x,y);
     }
     
@@ -52,11 +57,13 @@ public class Player{
             overlaps = ships[num].overlapsWith(x,y);
             num++;
         }
-        if(overlaps){
-            System.out.println("HIBITCHES");
+        if(overlaps)
             clicked = ships[num-1];
-        }
     }
     
-   
+    public void mapLocs(){
+        for(Ship next : ships){
+            next.setLoc();
+        }
+    }
 }
