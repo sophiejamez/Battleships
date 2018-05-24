@@ -20,8 +20,6 @@ public class Marker
             col = Color.WHITE;
         }
         yCoord = y;
-        //change string x into an int x coord
-        //why change it just to change it back?
     }
     
     public Marker(boolean hit, int x, int y){
