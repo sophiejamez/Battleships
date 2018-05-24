@@ -34,6 +34,13 @@ public class Ship{
     public Ship(){
     }
     
+    public int getLength(){
+        return length;
+    }
+    
+    public int getXLoc(){
+        return xLoc;
+    }
     
     public void setX(int x){
         xLoc = x;
@@ -63,10 +70,6 @@ public class Ship{
     public void move(int x, int y){
         xLoc = x;
         yLoc = y;
-    }
-    
-    public int getLength(){
-        return this.length;
     }
     
     public void draw( Graphics page ){
