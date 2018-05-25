@@ -59,6 +59,13 @@ public class Player{
         }
     }
     
+        public void drawMini(Graphics page){
+        for(int i = 0; i < ships.length; i ++){
+            page.setColor( new Color( 100, 100, 100 ) );
+            ships[i].drawMini(page);
+        }
+    }
+    
     public void move(int x, int y){
         if(!overlap(x, y))
             clicked.move(x,y);
