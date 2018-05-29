@@ -42,6 +42,10 @@ public class Ship{
         return xLoc;
     }
     
+    public int getYLoc(){
+        return yLoc;
+    }
+    
     public void setX(int x){
         xLoc = x;
         gridX = convertIntX(xLoc);
