@@ -69,10 +69,10 @@ public class Player{
     }
 
     public void move(int x, int y){
-        if(!overlap(x, y))
+        //if(!overlap(x, y))
             clicked.move(x,y);
-        else
-            System.out.println("Nice one");
+        //else
+            //System.out.println("Nice one");
     }
 
     public void act(int x, int y){

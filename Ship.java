@@ -93,12 +93,16 @@ public class Ship{
     }
     
     public void drawMini(Graphics page){
-        snapTo();
+        gridX = convertIntX(xLoc);
+        gridY = convertToGridY(yLoc);
         page.setColor(new Color(100,100,100));
-        page.fillRect(this.xLoc, this.yLoc, 60*length -20, 30);
+        int miniX = getColVal(gridX);
+        int miniY = gridY; 
+        System.out.println(miniX + ", " + miniY);
+        page.fillRect(Board.MINI_LEFT + miniX * Board.MINI_SIDE, Board.MINI_TOP + miniY * Board.MINI_SIDE, Board.MINI_SIDE*length-6, 10);
         page.setColor( new Color( 255, 255, 255 ) );
         for(int i = 0; i < length; i ++)
-            page.fillOval(this.xLoc + (60*i) + 20, this.yLoc + 10, 7, 7);
+            page.fillOval(Board.MINI_LEFT + miniX * (Board.MINI_SIDE*i), Board.MINI_TOP + miniY * Board.MINI_SIDE, 2, 2);
     }
     
     
