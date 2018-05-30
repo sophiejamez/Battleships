@@ -30,10 +30,12 @@ public class Player{
         {
             System.out.println("Ship at " + ships[i].getX() + ", " + ships[i].getY());
             String storedX = ships[i].getX();
-            if(x.equals(ships[i].getX()) && y == ships[i].getY())
-            {
-                return true;
-            }
+            try{
+                if(x.equals(ships[i].getX()) && y == ships[i].getY())
+                {
+                    return true;
+                }
+            }catch(NullPointerException e){System.out.println("no");}
         }
         return false;
     }
@@ -44,9 +46,9 @@ public class Player{
             int x = ships[i].getXLoc();
             int y = ships[i].getY();
             //for (int j = ships[i].length - 1; j > 0; j--){
-                if((x <= 20 || x>= 620) || (y <= 150 || y>= 750)){
-                    return false;
-                }
+            if((x <= 20 || x>= 620) || (y <= 150 || y>= 750)){
+                return false;
+            }
             //}
         }
         return true;
@@ -70,9 +72,9 @@ public class Player{
 
     public void move(int x, int y){
         //if(!overlap(x, y))
-            clicked.move(x,y);
+        clicked.move(x,y);
         //else
-            //System.out.println("Nice one");
+        //System.out.println("Nice one");
     }
 
     public void act(int x, int y){

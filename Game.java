@@ -65,8 +65,8 @@ public class Game extends JPanel implements MouseListener,ActionListener
         else
         {
             board.drawMini(page);
-            board.drawGame(page);
             player.drawMini(page);
+            board.drawGame(page);
         }
     }
 
