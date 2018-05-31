@@ -7,25 +7,25 @@ public class Computer extends Player{
     private ArrayList<Marker> computerMarkers = new ArrayList<Marker>();
     private String lastXSpot = "";
     private int lastYSpot = -10;
-    
+
     public Computer(){
         super();
         randomize();
     }
-    
+
     public void randomize(){
         for(int i = 0; i < Player.NUMSHIPS; i ++){
-            getShip(i).setX((int)(Math.random()*(Board.NUM_ROWS*Board.SIDE))+Board.LEFT);
-            getShip(i).setY((int)(Math.random()*(Board.NUM_COLS*Board.SIDE))+Board.TOP);
-            getShip(i).snapTo();
+                getShip(i).setX((int)(Math.random()*(getShip(i).getLength()*Board.SIDE))+Board.LEFT);
+                getShip(i).setY((int)(Math.random()*(Board.NUM_COLS*Board.SIDE))+Board.TOP);
+                getShip(i).snapTo();
         }
     }
-    
-        public void placeHit(String x, int y)
+
+    public void placeHit(String x, int y)
     {
         computerMarkers.add(new Marker(true, x,y));
     }
-    
+
     public void guess()
     {
         //check if the guessed place has hit something
@@ -83,7 +83,7 @@ public class Computer extends Player{
         }
         while(haveHit == true && sunkThisShip == false)
         {
-            
+
             //check direction of the ship, and if you have hit multiple places in the ship
             //need to check if you have sunk the entire ship
         }

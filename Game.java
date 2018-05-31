@@ -88,11 +88,12 @@ public class Game extends JPanel implements MouseListener,ActionListener
         if(!placed)
         {
             board.draw(page);
-            player.draw( page );//calls the draw method in the Player class
+            //player.draw( page );//calls the draw method in the Player class
         }
         else
         {
             turn.setVisible(true);
+            computer.draw(page);
             board.drawMini(page);
             player.drawMini(page);
             board.drawGame(page);
@@ -120,8 +121,7 @@ public class Game extends JPanel implements MouseListener,ActionListener
                 selected = true;
             }
             else{
-                player.move(x, y);
-                selected = false;
+                selected = player.move(x, y);
             }
         }
         else{
@@ -142,7 +142,12 @@ public class Game extends JPanel implements MouseListener,ActionListener
         }
     }
     
-    
+    public void changePlaceBoolean(){
+        if (selected)
+            selected = false;
+        else
+            selected = true;
+    }
     
     public void changeText(){
         if(turn.getText().equals(yourTurn))
