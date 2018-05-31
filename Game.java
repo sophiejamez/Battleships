@@ -88,12 +88,11 @@ public class Game extends JPanel implements MouseListener,ActionListener
         if(!placed)
         {
             board.draw(page);
-            //player.draw( page );//calls the draw method in the Player class
+            player.draw( page );//calls the draw method in the Player class
         }
         else
         {
             turn.setVisible(true);
-            computer.draw(page);
             board.drawMini(page);
             player.drawMini(page);
             board.drawGame(page);
