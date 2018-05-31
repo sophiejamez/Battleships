@@ -15,9 +15,11 @@ public class Computer extends Player{
 
     public void randomize(){
         for(int i = 0; i < Player.NUMSHIPS; i ++){
-                getShip(i).setX((int)(Math.random()*(getShip(i).getLength()*Board.SIDE))+Board.LEFT);
-                getShip(i).setY((int)(Math.random()*(Board.NUM_COLS*Board.SIDE))+Board.TOP);
-                getShip(i).snapTo();
+            int x = (int)(Math.random()*((11-getShip(i).getLength())*Board.SIDE))+Board.LEFT;
+            int y = (int)(Math.random()*(Board.NUM_COLS*Board.SIDE))+Board.TOP;
+            getShip(i).setX(x);
+            getShip(i).setY(y);
+            getShip(i).snapTo();
         }
     }
 
