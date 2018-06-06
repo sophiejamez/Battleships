@@ -1,4 +1,8 @@
-//done
+//The Location class has private variables that hold the values for the coordinates of a ship
+//and the length of each ship. Methods included allow for the construction of a location, 
+//the ability to access x and y coordinates, check if coordinates are in bounds, snapping a
+//ship to the center of the row it is in, and increasing the col value by one. Everything
+//to do with location is in this class. Board, Marker, and Ship all use this class. 
 
 public class Location{
     private int xCoord;
@@ -11,6 +15,7 @@ public class Location{
 
     private boolean inBounds;
 
+    //contstructor
     public Location(int x, int y){
         xCoord = x;
         yCoord = y;
@@ -22,6 +27,7 @@ public class Location{
         }
     }
 
+    //constructor
     public Location(int x, int y, int l){
         xCoord = x;
         yCoord = y;
@@ -34,11 +40,13 @@ public class Location{
         }
     }
 
+    //constructor
     public Location(String x, int y){
         gridX = x;
         gridY = y;
     }
 
+    //returns whether selected location is in bounds
     public boolean locEquals(Location check){
         if(check.checkBounds() && this.checkBounds()){
             if(check.getGridX().equals(this.getGridX()) && check.getGridY() == this.getGridY())
@@ -53,28 +61,35 @@ public class Location{
         return false;
     }
 
+    //returns x coordinate
     public int getXVal(){
         return xCoord;
     }
 
+    //returns y coordinate
     public int getYVal(){
         return yCoord;
     }
 
+    //returns string of x coordinate of grid A-J
     public String getGridX(){
         return gridX;
     }
-
+    
+    //returns y coordinate of grid 0-9
     public int getGridY(){
         return gridY;
     }
 
+    // pre: setInBounds() has been called
+    // post: returns if location is inBounds
     public boolean checkBounds(){
         if(gridY == -1 || gridX == null)
             return false;
         return true;
     }
 
+    //places ship in the middle of section selected
     public void snapTo(){
         if(!inBounds)
             return;
@@ -83,6 +98,8 @@ public class Location{
         yCoord = ((gridY) * Board.SIDE) + Board.TOP + 2*SPACE;
     }
 
+    // pre: none
+    // post: turns int x loc into a String on grid
     public static int getColVal(String col){
         if (col==null)
             return -1;
@@ -109,6 +126,8 @@ public class Location{
         return -1;
     }
 
+    // pre: x is in grid
+    // post: gets int loc of x and changes it into a String
     public static String convertIntX(int x){
         String answer = "A";
         int num = 0;
@@ -121,6 +140,7 @@ public class Location{
         return null;
     }
 
+    //converts y coordinate to grid y coordinate on board
     public static int convertToGridY(int y){
         int answer = 0;
         int num = 0;
@@ -133,6 +153,7 @@ public class Location{
         return -1;
     }
 
+    //increases x coordinate by one (string)
     public static String increment(String change){
         if(change == null)
             return null;
@@ -157,6 +178,7 @@ public class Location{
         return null;
     }
     
+    //decreases x coordinate by one (string)
     public static String decrement(String change){
         if(change == null)
             return null;

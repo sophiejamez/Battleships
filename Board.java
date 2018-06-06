@@ -1,4 +1,7 @@
-//done
+//The Board class has a lot of final ints that hold the dimensions of the board itself. 
+//Methods make the board visible, a smaller version of your own board so you remember 
+//where your ships are, and methods to place markers if a ship was or wasn't hit. Ship,
+//Location, Computer, and Game all use this class. 
 
 import java.awt.*;
 import java.util.*;
@@ -22,14 +25,17 @@ public class Board extends JFrame{
     
     private boolean mini;
 
+    // constructor
     public Board(){
         mini = false;
     }
     
+    // constructor
     public Board(boolean size){
         mini = size;
     }
 
+    // draws the grid on the screen
     public void draw( Graphics page ){
         page.setColor( Color.BLACK );//color defined using rgb values (0-255 each)
         for(int r = 0; r <= NUM_ROWS; r ++)
@@ -38,6 +44,7 @@ public class Board extends JFrame{
             page.fillRect(LEFT+SIDE*c, TOP, THICK, NUM_ROWS * SIDE);
     }
     
+    // draws the page
     public void drawGame( Graphics page){
         this.draw(page);
         if(mini)
@@ -48,6 +55,7 @@ public class Board extends JFrame{
                 next.draw(page);
     }
     
+    // draws mini version of game in the corner
         public void drawMini(Graphics page){
         page.setColor( Color.BLACK );//color defined using rgb values (0-255 each)
         for(int r = 0; r <= NUM_ROWS; r ++)
@@ -56,11 +64,13 @@ public class Board extends JFrame{
             page.fillRect(MINI_LEFT+MINI_SIDE*c, MINI_TOP, MINI_THICK, NUM_ROWS * MINI_SIDE);
     }
 
+    // draws a red circle to represent a hit
     public void placeHit(Location loc)
     {
         markers.add(new Marker(true, loc));
     }
     
+    // draws a white circle to represent a miss
     public void placeMiss(Location loc)
     {
         markers.add(new Marker(false, loc));

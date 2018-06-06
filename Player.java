@@ -1,4 +1,6 @@
-//done
+//The Player class creates an array of Ships for both the player and computer. It checks if 
+//ships are in bounds, it creates an array of Locations of all the ships, and it snaps a ship
+//to the center of the row it is placed in. Game uses this class, and Computer extends it.
 
 import java.awt.*;
 import java.util.*;
@@ -15,6 +17,7 @@ public class Player{
     private int[] numGuess;
     private int lastHit;
 
+    //constructor
     public Player(){
         ships = new Ship[NUMSHIPS];
         clicked = new Ship();
@@ -27,12 +30,14 @@ public class Player{
         lastHit = -1;
     }
     
+    //returns whether all opponent's ships have been sunk
     public boolean won(){
         if(numSunk == NUMSHIPS)
             return true;
         return false;
     }
     
+    //creates location array list that hols locations of all ships
     public void createLocs(){
         locs = new ArrayList<Location>();
         for(Ship next : ships){
@@ -46,10 +51,12 @@ public class Player{
         }
     }
     
+    //returns ship array
     public Ship[] getShips(){
         return ships;
     }
     
+    //returns whether ship is in or out of bounds
     public boolean outOfBounds(){
         for(Ship next : ships)
             if(!next.getLoc().checkBounds())
@@ -57,21 +64,25 @@ public class Player{
         return false;
     }
 
+    //returns ship object from array of ships
     public Ship getShip(int i){
         return ships[i];
     }
-
+    
+    //returns the point where bomb hit a ship, -1 if no ship is hit
     public int bombHit(Location next){
         if(pointOverlapPlayer(next)!=-1)
             return pointOverlapPlayer(next);
         return -1;
     }
     
+    //snaps ship to middle of location
     public void snapTo(){
         for(Ship next : ships)
             next.snapLoc();
     }
     
+    //returns array list of locations
     public ArrayList<Location> getLocs(){
         return locs;
     }
@@ -85,6 +96,7 @@ public class Player{
         }
     }
 
+    //draws a mini graphic of player's ships
     public void drawMini(Graphics page){
         for(int i = 0; i < ships.length; i ++){
             page.setColor( new Color( 100, 100, 100 ) );
@@ -92,6 +104,7 @@ public class Player{
         }
     }
 
+    //returns whether player can move
     public boolean move(int x, int y){
         if(!shipOverlap(new Location(x,y), clicked.getLength())){
             clicked.move(x,y);
@@ -100,6 +113,7 @@ public class Player{
         return true;
     }
 
+    //makes the player act
     public void act(Location next){
         boolean overlaps = false;
         int num = 0;
@@ -112,6 +126,7 @@ public class Player{
             clicked = ships[num-1];
     }
     
+    //returns whether ship being placed is overlapping with ships already on the board
     public boolean shipOverlap(Location next, int length){
         if(!next.checkBounds())
             return false;
@@ -130,6 +145,7 @@ public class Player{
         return false;
     }
 
+    //returns int that indicates the point at which two locations overlap
     public int pointOverlapPlayer(Location next){
         if(!next.checkBounds())
             return -1;
@@ -148,12 +164,14 @@ public class Player{
         return -1;
     }
     
+    //returns whether ships has been sunk
     public boolean sunk(){
         if(numGuess[lastHit] == lastHit+1)
             return true;
         return false;
     }
     
+    //updates how many times ships has been hit
     public void hitUpdate(int i){
         numGuess[i] ++;
         lastHit = i;

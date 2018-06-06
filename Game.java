@@ -1,4 +1,7 @@
-//done
+//The Game class has a multitude of private variables that hold different Strings, Boards,
+//Players, and that will determine how the board looks, how the board works, and finds if the
+//location selected is within boundaries. The Driver uses this class. 
+
 
 import java.awt.*;
 import java.util.*;
@@ -86,6 +89,7 @@ public class Game extends JPanel implements MouseListener,ActionListener,KeyList
         this.setFocusable(true);
     }
     
+    //Creates the title screen.
     public void createTitleScreen(){
         begin = new JLabel(START);
         begin.setBounds(300, 500, 500,30);
@@ -158,6 +162,8 @@ public class Game extends JPanel implements MouseListener,ActionListener,KeyList
         }
     }
 
+    //checks if the spot pressed is in bounds and a valid selection, and sets whatever visuals
+    //are required for that spot to visible. 
     public void mousePressed(MouseEvent e) {
         int x = e.getX();
         int y = e.getY();
@@ -196,6 +202,8 @@ public class Game extends JPanel implements MouseListener,ActionListener,KeyList
         }
     }
     
+    //switches the turn to computer after player completes their move. Then completes
+    //computer move.
     public void computerTurn(){
         if(!computer.getFound()){
             computer.setLastLoc(computer.getRandomGuess());
@@ -221,6 +229,7 @@ public class Game extends JPanel implements MouseListener,ActionListener,KeyList
         }
     }
 
+    //Makes selected the opposite of whatever it was. 
     public void changePlaceBoolean(){
         if (selected)
             selected = false;
