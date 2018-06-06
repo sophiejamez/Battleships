@@ -1,3 +1,5 @@
+//done
+
 import java.awt.*;
 import java.util.*;
 import javax.swing.*;
@@ -17,8 +19,15 @@ public class Board extends JFrame{
 
     private ArrayList<Ship> computer = new ArrayList<Ship>();
     private ArrayList<Marker> markers = new ArrayList<Marker>();
+    
+    private boolean mini;
 
     public Board(){
+        mini = false;
+    }
+    
+    public Board(boolean size){
+        mini = size;
     }
 
     public void draw( Graphics page ){
@@ -31,8 +40,12 @@ public class Board extends JFrame{
     
     public void drawGame( Graphics page){
         this.draw(page);
-        for(Marker next : markers)
-            next.draw(page);
+        if(mini)
+            for(Marker next : markers)
+                next.drawMini(page);
+        else
+            for(Marker next : markers)
+                next.draw(page);
     }
     
         public void drawMini(Graphics page){
@@ -42,18 +55,14 @@ public class Board extends JFrame{
         for(int c = 0; c <= NUM_COLS; c++)
             page.fillRect(MINI_LEFT+MINI_SIDE*c, MINI_TOP, MINI_THICK, NUM_ROWS * MINI_SIDE);
     }
-        
-    public void act(int x, int y){
 
-    }
-
-    public void placeHit(int x, int y)
+    public void placeHit(Location loc)
     {
-        markers.add(new Marker(true, x,y));
+        markers.add(new Marker(true, loc));
     }
     
-    public void placeMiss(int x, int y)
+    public void placeMiss(Location loc)
     {
-        markers.add(new Marker(false, x, y));
+        markers.add(new Marker(false, loc));
     }
 }
