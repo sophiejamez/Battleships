@@ -118,6 +118,7 @@ public class Game extends JPanel implements MouseListener,ActionListener,KeyList
                 if(!begun)
                     begin.setVisible(!begin.isVisible());
             }catch( InterruptedException ex ){}
+            this.repaint();
             if(error.isVisible() || result.isVisible())
                 try{
                     Thread.sleep(800);
@@ -125,7 +126,7 @@ public class Game extends JPanel implements MouseListener,ActionListener,KeyList
                     error.setVisible(false);
                 }catch(InterruptedException ex){}
 
-            this.repaint();//redraw the screen with the updated locations; calls paintComponent below
+            this.repaint();
 
         }
         if(player.won())
